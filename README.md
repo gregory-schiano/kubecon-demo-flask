@@ -26,7 +26,9 @@ flask run -p 8000
 ```
 
 Open a browser on: http://127.0.0.1:8000
+
 Show the application, you can use the following Youtube URL: https://www.youtube.com/watch?v=q5yM4ZYwB_s
+
 Back to the terminal:
 ```bash
 deactivate
@@ -34,15 +36,17 @@ rockcraft init --profile flask-framework
 ```
 
 Edit rockcraft.yaml and apply the following changes:
-	=> Base ubuntu@24.04
-	=> Summary: A simple Flask application that uses python3-qrcode package
-	=> Description:
+- Base ubuntu@24.04
+- Summary: A simple Flask application that uses python3-qrcode package
+- Description:
+```
   A simple Flask application meant to demo Flask 12-factor experience
   in Rockcraft, along with bare base / chiseled package and pro
   feature in Rockcraft
-  	=> Uncomment "parts:"
-  	=> Add "ffmpeg" in runtime-debs
-  	=> Add
+```
+- Uncomment `parts:`
+- Add `ffmpeg` in `runtime-debs`
+- Add:
 ```yaml
   fix-symlinks:
     plugin: nil
@@ -52,7 +56,7 @@ Edit rockcraft.yaml and apply the following changes:
       ln -sf blas/libblas.so.3 ${CRAFT_PRIME}/usr/lib/x86_64-linux-gnu/libblas.so.3
       ln -sf lapack/liblapack.so.3 ${CRAFT_PRIME}/usr/lib/x86_64-linux-gnu/liblapack.so.3
 ```
-Save & exit
+- Save & exit
 ```bash
 rockcraft pack
 sudo rockcraft.skopeo --insecure-policy copy oci-archive:kubecon-demo_0.1_amd64.rock docker-daemon:kubecon-demo:0.1
@@ -60,15 +64,17 @@ docker run --rm -d -p 8000:8000 --name kubecon-demo kubecon-demo:0.1
 ```
 
 Open a browser on: http://127.0.0.1:8000
+
 Show the application, you can use the following Youtube URL: https://www.youtube.com/watch?v=q5yM4ZYwB_s
+
 Back to the terminal:
 ```bash
 docker stop kubecon-demo
 ```
 
 Edit rockcraft.yaml and do the following change:
-	=> Version 0.2
-Save & exit
+- Version `0.2`
+- Save & exit
 ```bash
 rockcraft clean
 pro status
@@ -82,28 +88,36 @@ docker exec -ti kubecon-demo md5sum /usr/lib/x86_64-linux-gnu/libavcodec.so.60.3
 ```
 
 Open a browser on: http://127.0.0.1:8000
+
 Show the application, you can use the following Youtube URL: https://www.youtube.com/watch?v=q5yM4ZYwB_s
+
 Back to the terminal:
 ```bash
 docker stop kubecon-demo
 ```
 
 Edit rockcraft.yaml and do the following changes:
-	=> Version 0.3
-	=> Base bare
-	=> Add build-base: ubuntu@24.04
-	=> Uncomment runtime-slices and add
-           - base-files_chisel
-           - base-files_release-info
-Save & exit
+- Version `0.3`
+- Base `bare`
+- Add `build-base: ubuntu@24.04`
+- Uncomment `runtime-slices` part
+- Add:
+```yaml
+- base-files_chisel
+- base-files_release-info
+```
+- Save & exit
 ```bash
 rockcraft pack --pro=esm-apps,esm-infra
 ls -lah kubecon-demo_0.*
 sudo rockcraft.skopeo --insecure-policy copy oci-archive:kubecon-demo_0.3_amd64.rock docker-daemon:kubecon-demo:0.3
 docker run --rm -d -p 8000:8000 --name kubecon-demo kubecon-demo:0.3
 ```
+
 Open a browser on: http://127.0.0.1:8000
+
 Show the application, you can use the following Youtube URL: https://www.youtube.com/watch?v=q5yM4ZYwB_s
+
 Back to the terminal:
 ```bash
 docker stop kubecon-demo
