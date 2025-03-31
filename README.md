@@ -147,7 +147,7 @@ docker run -v /var/run/docker.sock:/var/run/docker.sock -v /tmp/trivy.tpl:/tmp/t
 Run trivy scan on the pro enabled image (requires ssbom as it's a bare image):
 ```bash
 docker run --rm -d -p 8000:8000 --name kubecon-demo kubecon-demo:0.3
-docker cp ../ssbom/ssbom kubecon-demo:/tmp
+docker cp *Path to ssbom project*/ssbom kubecon-demo:/tmp
 docker exec -ti kubecon-demo bash
 cd
 /tmp/ssbom /
