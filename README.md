@@ -2,7 +2,7 @@
 A sample flask application using FFmpeg as a demo for Rockcraft at Kubecon
 
 
-#Before demo
+# Before demo
 - Pull https://github.com/canonical/ssbom/pull/1
 
 Run: `go build ./cmd/ssbom/`
@@ -14,7 +14,7 @@ Run: `sudo snap install rockcraft --channel edge/pro-sources`
 - Ensure your host is pro enabled
 Run: `pro status`
 
-#Demo
+# Demo
 
 Start from this project's folder
 ```bash
@@ -109,7 +109,7 @@ Back to the terminal:
 docker stop kubecon-demo
 ```
 
-#Show vulnerability scan
+# Show vulnerability scan
 
 Create a file in /tmp/trivy.tpl with the following content:
 ```
